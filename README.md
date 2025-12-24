@@ -1,70 +1,159 @@
-# Getting Started with Create React App
+##  Codesync – Real-Time Collaborative Code Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Codesync is a sophisticated real-time collaborative platform that allows developers to join a shared room and write code together simultaneously. Built with a focus on low latency and synchronization, it provides a seamless **Google Docs–like experience for programming**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+##  Features
 
-### `npm start`
+- **Real-Time Synchronization**  
+  Instant code updates across all connected users via WebSockets.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Room-Based Sessions**  
+  Create or join specific rooms using unique IDs for private or group collaboration.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Syntax Highlighting**  
+  Support for multiple programming languages powered by the CodeMirror engine.
 
-### `npm test`
+- **User Presence**  
+  Real-time tracking of collaborators within the same workspace.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Clean UI**  
+  A minimalist, distraction-free interface designed for productivity.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Frontend
+- **React.js** – Component-based UI development  
+- **CodeMirror** – Advanced in-browser code editor  
+- **HTML5 / CSS3 / JavaScript** – Core web technologies  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Backend
+- **Node.js** – Scalable server-side runtime  
+- **Express.js** – Minimalist web framework  
+- **Socket.IO** – Real-time, bidirectional communication  
 
-### `npm run eject`
+### Tools
+- **Git & GitHub** – Version control and repository hosting  
+- **npm** – Package management  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##  Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+realtime-codeeditor/
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+├── client/                                
+React frontend application
 
-## Learn More
+│   ├── public/            
+Static assets and index.html
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+│   ├── src/               
+UI components, logic, and styles
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+│   └── package.json       
+Frontend dependencies
 
-### Code Splitting
+├── server/                
+Node.js & Socket.IO backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+│   ├── index.js           
+Entry point for WebSocket logic
 
-### Analyzing the Bundle Size
+│   └── package.json       
+Backend dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+├── .gitignore             
+Excluded files (node_modules, etc.)
 
-### Making a Progressive Web App
+└── README.md             
+Project documentation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+##  Installation and Setup
 
-### Deployment
+Follow the steps below to run the project locally.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 1. Clone the Repository
 
-### `npm run build` fails to minify
+```bash
+git clone https://github.com/VigneshDeekonda/Codesync-Collaborative-editor.git
+cd realtime-codeeditor
+```
+2. **Install Dependencies**  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Backend Setup**
+
+```bash
+cd server
+npm install
+```
+**Frontend Setup**
+
+```bash
+cd ../client
+npm install
+```
+
+**3. Run the Application**
+
+Start the backend first, then the frontend
+
+**Start Server**
+
+```bash
+Copy code
+cd server
+npm start
+```
+
+**Start Client**
+```bash
+cd ../client
+npm start
+```
+
+**4. Open in Browser**
+```Visit:
+http://localhost:3000
+```
+## How It Works
+* Handshake :
+When a user enters a Room ID, a WebSocket handshake is initiated via Socket.IO.
+
+* Rooms
+The server assigns each socket connection to a specific room channel.
+
+* Broadcasting
+CodeMirror detects code changes and emits events to the server, which broadcasts them to all users in the same room.
+
+* Synchronization
+All connected clients update their local editor state in real time without page refresh.
+
+## Future Enhancements
+ * Code Execution with integrated terminal
+
+* Authentication using JWT and saved project history
+
+ * Voice and Video Chat using WebRTC
+
+* Cloud Persistence with MongoDB or PostgreSQL
+
+## Contributing
+* Contributions are welcome.
+
+* Please fork the repository, create a feature branch, and submit a pull request.
+
+## License
+* This project is licensed under the MIT License.
+
+## Author
+**Vignesh Deekonda GitHub** : https://github.com/VigneshDeekonda
+
+**Vignesh Deekonda Github** : https://www.linkedin.com/in/vigneshdeekonda/
+
