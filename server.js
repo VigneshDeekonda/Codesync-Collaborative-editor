@@ -6,6 +6,10 @@ const cors = require("cors");
 const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
+  "http://localhost:3001",
+  "http://localhost:3002",
+  "http://localhost:3003",
+  "*://localhost:*",
   "https://codesync-collaborative-editor-production.up.railway.app"
 ];
 
