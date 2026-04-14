@@ -1,5 +1,18 @@
-# TODO: Enable Code Execution in Editor Page
+# Socket.io CORS Fix - Progress Tracker
 
-- [x] Fix Editorpage.js: Add setOutput to useState for output, attach onClick handler to Run Code button to send POST request to /run endpoint and update output.
-- [x] Test code execution for each language (C, C++, Python, JavaScript). Note: Java requires JDK installation to run. C and C++ tested and working.
-- [x] Ensure backend server is running on port 5000.
+## ✅ Confirmed
+- [x] Backend deployment live (intermittent /run success)
+- [x] Latest code deployed (not stale)
+
+## ✅ Completed
+- [x] 1. Update server.js CORS configuration for production
+- [ ] 2. Test locally with `npm run server:dev`
+- [ ] 3. Commit & push to GitHub (Railway auto-deploy)
+- [ ] 4. Test frontend Socket.io connection
+
+## Next Steps After Fix
+```
+Frontend: http://localhost:3000 → Railway Socket.io ✅
+Deployment URL: https://codesync-collaborative-editor-production.up.railway.app ✅
+```
+
