@@ -86,7 +86,7 @@ const Editorpage = () => {
         <h2>Socket Connection Error</h2>
         <p>{socketError}</p>
         <p>
-          Make sure backend is running on <b>http://localhost:5000</b>
+         Make sure backend server is running at the correct URL
         </p>
         <button onClick={() => window.location.reload()}>Retry</button>
       </div>
@@ -181,7 +181,7 @@ const Editorpage = () => {
         <button
           className="runButton"
           onClick={async () => {
-            const res = await fetch("http://localhost:5000/run", {
+            const res = await fetch("https://codesync-collaborative-editor-production.up.railway.app/run", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ language, code }),
