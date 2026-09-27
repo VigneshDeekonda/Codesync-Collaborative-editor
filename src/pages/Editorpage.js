@@ -9,7 +9,7 @@ import { javascript } from "@codemirror/lang-javascript";
 import { python as pythonLang } from "@codemirror/lang-python";
 import { java } from "@codemirror/lang-java";
 import { EditorView } from "@codemirror/view";
-import { initSocket } from "../socket";
+import { initSocket, BACKEND_URL } from "../socket";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // Helper to read query params
@@ -181,14 +181,19 @@ const Editorpage = () => {
         <button
           className="runButton"
           onClick={async () => {
-            const res = await fetch("https://codesync-collaborative-editor-production.up.railway.app/run", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ language, code }),
-            });
+            try {
+              setOutput("Running code...");
+              const res = await fetch(`${BACKEND_URL}/run`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ language, code }),
+              });
 
-            const data = await res.json();
-            setOutput(data.output);
+              const data = await res.json();
+              setOutput(data.output || "No output");
+            } catch (err) {
+              setOutput("Execution error: " + err.message);
+            }
           }}
         >
           Run Code

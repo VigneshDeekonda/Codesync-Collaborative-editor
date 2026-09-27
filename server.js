@@ -2,19 +2,23 @@ const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
+const { exec } = require("child_process");
+const fs = require("fs");
+const path = require("path");
 
 const app = express();
 const server = http.createServer(app);
 
-// SIMPLIFIED CORS - Express first
+// Enable CORS and JSON parsing
 app.use(cors({
-  origin: true, // Allow ALL for debugging
+  origin: true,
   credentials: true
 }));
+app.use(express.json());
 
 const io = new Server(server, {
   cors: {
-    origin: "*", 
+    origin: (origin, callback) => callback(null, true),
     methods: ["GET", "POST"],
     credentials: true
   }
@@ -43,32 +47,24 @@ io.on("connection", (socket) => {
     socket.to(roomId).emit("CODE_CHANGE", { code });
   });
 
-  socket.on("disconnect", () => {
+  socket.on("disconnecting", () => {
     const username = userSocketMap[socket.id];
-    delete userSocketMap[socket.id];
-    socket.rooms.forEach((roomId) => {
+    const rooms = [...socket.rooms];
+    rooms.forEach((roomId) => {
       const clients = Array.from(io.sockets.adapter.rooms.get(roomId) || [])
+        .filter((id) => id !== socket.id)
         .map((socketId) => ({
           socketId,
           username: userSocketMap[socketId],
         }));
       io.to(roomId).emit("joined", { clients });
     });
+    delete userSocketMap[socket.id];
     console.log("❌ DISCONNECTED:", socket.id, username);
   });
 });
 
-const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-  console.log("🚀 Socket.io ready");
-});
-
 // CODE EXECUTION
-const { exec } = require("child_process");
-const fs = require("fs");
-const path = require("path");
-
 const executeCode = (language, code) => {
   return new Promise((resolve, reject) => {
     const id = Date.now();
@@ -97,7 +93,7 @@ const executeCode = (language, code) => {
         command = `node ${filePath}`;
         break;
       default:
-        reject("Language not supported");
+        return reject("Language not supported");
     }
 
     fs.writeFileSync(filePath, code);
@@ -108,7 +104,6 @@ const executeCode = (language, code) => {
   });
 };
 
-app.use(express.json());
 app.post("/run", async (req, res) => {
   const { language, code } = req.body;
   try {
@@ -119,4 +114,8 @@ app.post("/run", async (req, res) => {
   }
 });
 
-console.log("✅ Backend ready - CORS enabled");
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+  console.log("🚀 Socket.io ready");
+});
