@@ -1,4 +1,4 @@
-# ⚡ CodeSync: Real-Time Collaborative Cloud Editor & Execution Engine
+#  CodeSync: Real-Time Collaborative Cloud Editor & Execution Engine
 
 <p align="center">
   <img src="public/templatereal.png" alt="CodeSync Hero Banner" width="750" style="border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.6);" />
@@ -19,7 +19,7 @@
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 - [Overview](#-overview)
 - [Key Features](#-key-features)
 - [Supported Languages & Execution Runtime](#-supported-languages--execution-runtime)
@@ -35,7 +35,7 @@
 
 ---
 
-## 🚀 Overview
+##  Overview
 
 Distributed software teams, coding interviewers, and student study groups often struggle with laggy screen shares, asynchronous code snippets, and fragmented tooling. 
 
@@ -47,7 +47,7 @@ Distributed software teams, coding interviewers, and student study groups often 
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 * **Instant Bi-Directional Sync**: Powered by Socket.io room pipelines with delta change tracking to prevent echo loops.
 * **Multi-Language In-Browser Editor**: Built on CodeMirror v6 with full syntax highlighting, active line indicators, auto-closing brackets, and intelligent autocomplete.
@@ -58,7 +58,7 @@ Distributed software teams, coding interviewers, and student study groups often 
 
 ---
 
-## 💻 Supported Languages & Execution Runtime
+##  Supported Languages & Execution Runtime
 
 CodeSync supports on-the-fly execution across industry-standard programming languages:
 
@@ -72,7 +72,7 @@ CodeSync supports on-the-fly execution across industry-standard programming lang
 
 ---
 
-## 🔄 Real-Time Synchronization & Room Lifecycle
+##  Real-Time Synchronization & Room Lifecycle
 
 CodeSync manages real-time socket connections through an optimized room subscription topology:
 
@@ -111,7 +111,7 @@ CodeSync manages real-time socket connections through an optimized room subscrip
 
 ---
 
-## 📁 Project Architecture & Directory Layout
+##  Project Architecture & Directory Layout
 
 ```
 Codesync-Collaborative-editor/
@@ -144,7 +144,7 @@ Codesync-Collaborative-editor/
 
 ---
 
-## 🔌 WebSocket & Event Matrix
+##  WebSocket & Event Matrix
 
 | Event Name | Direction | Payload Schema | Functional Scope |
 | :--- | :---: | :--- | :--- |
@@ -156,7 +156,7 @@ Codesync-Collaborative-editor/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Prerequisites
 * **Node.js**: `v18.x` or higher (tested on `v20.x` & `v24.x`)
@@ -191,7 +191,7 @@ Run the backend server and frontend client in two separate terminal sessions:
 npm run server:dev
 # or: node server.js
 ```
-*Output: `✅ Server running on port 5000` & `🚀 Socket.io ready`*
+*Output: ` Server running on port 5000` & ` Socket.io ready`*
 
 **Terminal 2 — React Client:**
 ```bash
@@ -201,7 +201,7 @@ npm start
 
 ---
 
-## ⚙️ Code Execution API Specification
+##  Code Execution API Specification
 
 The backend server exposes a lightweight sandboxed code compilation endpoint:
 
@@ -233,7 +233,7 @@ The backend server exposes a lightweight sandboxed code compilation endpoint:
 
 ---
 
-## 🛠️ Available Scripts
+##  Available Scripts
 
 | Command | Action |
 | :--- | :--- |
@@ -245,7 +245,7 @@ The backend server exposes a lightweight sandboxed code compilation endpoint:
 
 ---
 
-## 🔮 Future Roadmap
+##  Future Roadmap
 
 - [ ] **Dockerized Container Sandboxes**: Execute untrusted code inside isolated ephemeral Docker containers with strict memory limits.
 - [ ] **WebRTC Voice & Video**: Integrated audio/video communication for seamless pair programming sessions.
@@ -255,14 +255,10 @@ The backend server exposes a lightweight sandboxed code compilation endpoint:
 
 ---
 
-## 👨‍💻 Author & Connect
+##  Author & Connect
 
 **Vignesh Deekonda**
 * **GitHub**: [@VigneshDeekonda](https://github.com/VigneshDeekonda)
 * **LinkedIn**: [Vignesh Deekonda](https://www.linkedin.com/in/vigneshdeekonda/)
 
 ---
-
-## 📜 License
-
-Distributed under the **MIT License**. Feel free to use, modify, and distribute for educational or commercial purposes.
